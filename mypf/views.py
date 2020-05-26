@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
-# Create your views here.
+from .models import Project
+
+def home_view(request):
+    projects = Project.objects.filter(status='published')
+    return render(request, 'mypf/index.html', { 'projects':projects })
