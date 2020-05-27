@@ -5,3 +5,8 @@ from .models import Project
 def home_view(request):
     projects = Project.objects.filter(status='Published')
     return render(request, 'mypf/index.html', { 'projects':projects })
+
+def detail_view(request, year, month, day, project):
+    project = get_object_or_404(Project, slug=project, status='Published', publish__year=year, publish__month=month, publish__day=day)
+    images = project.other_images.all() # returns queryset of other images
+    return render(request, 'mypf/detail.html', {'project':project, 'images':images})

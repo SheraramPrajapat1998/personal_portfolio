@@ -32,6 +32,8 @@ class Project(models.Model):
     def __str__(self):
         return self.title
     
+    def get_absolute_url(self):
+        return reverse('detail', args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
 
 class Images(models.Model):
     image = models.ImageField(upload_to='project')
