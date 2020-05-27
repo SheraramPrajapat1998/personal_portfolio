@@ -17,7 +17,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, db_index=True, unique=True)
     image = models.ImageField(upload_to='project/') # main image that will be displayed on front  
-    descrition = models.TextField()
+    description = models.TextField()
     github_link = models.URLField(blank=True, null=True)
     live_link = models.URLField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
