@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Project, Images
+from .models import Project, Images, Contact
 
 class AdminImages(admin.TabularInline):
     model = Images
@@ -19,3 +19,9 @@ class ProjectAdmin(admin.ModelAdmin):
     ordering = ['publish']
     list_display_links = ['title', 'github_link']
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'subject', 'email', 'message', 'sent_time']
+    list_filter = ['name', 'email', 'sent_time']
+    search_fields = ['name', 'subject', 'email']
+    date_hierarchy = 'sent_time'

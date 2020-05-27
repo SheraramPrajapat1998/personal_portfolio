@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from .models import Project
+from .forms import ContactForm
 
 def home_view(request):
     projects = Project.objects.filter(status='Published')
@@ -16,7 +18,8 @@ def contact(request):
         form = ContactForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contact')
+            messages.success(request, 'Your feedback has been sent. Thanks')
+            return redirect('home')
     else:
         form = ContactForm()
     return render(request, 'mypf/contact.html', {'form':form})

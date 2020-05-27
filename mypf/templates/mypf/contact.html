@@ -1,0 +1,31 @@
+{% extends "mypf/base.html" %}
+
+{% block content %}
+<main id="main">
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Please fill the following form to contact me:</p>
+      </div>
+
+      <div class="row" data-aos="fade-in">
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form action="." method="post" role="form" class="contact-form">
+            {% for field in form %}
+            {% csrf_token %}
+              <div class="form-group row">
+                <label for="id_{{ field.name }}" class="col-3 col-form-label"> {{ field.label }} </label>
+                <div class="col-18">
+                    {{ field }}
+                </div>
+              </div>
+            {% endfor %}
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock content %}
