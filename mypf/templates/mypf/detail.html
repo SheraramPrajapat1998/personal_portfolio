@@ -1,0 +1,54 @@
+{% extends "mypf/base.html" %}
+{% load static %}
+
+{% block content %}
+<main id="main">
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ project.title }}</h2>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Project Details</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+  
+   <!-- ======= Portfolio Details Section ======= -->
+   <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="portfolio-details-container">
+
+        <div class="owl-carousel portfolio-details-carousel">
+          {% for image in images %}
+            <img src="{{ image.image.url }}" class="img-fluid" >
+          {% endfor %}
+        </div>
+
+        <div class="portfolio-info">
+          <h3>Project Information</h3>
+          <ul>
+            <li><strong>Project </strong>: {{ project.title }}</li>
+            <li><strong>Project Link to GitHub</strong>: <a href="{{ project.link }}">SheraramPrajapat1998/{{ project.title }}</a></li>
+            {% if project.live_link %}
+              <li><strong>You can check this project at </strong><a href="{{ project.live_link }}">natsu1998/{{ project.title }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="portfolio-description">
+        <h2>Description</h2>
+        <p>{{ project.description|linebreaks }}</p>
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Details Section -->
+
+</main>
+{% endblock content %}

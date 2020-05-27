@@ -198,7 +198,7 @@
                     <h5 class="card-title">{{ project.title }}</h5>
                       <div class="portfolio-links">
                         <a href="{{ project.image.url }}" data-gall="portfolioGallery" class="venobox" title="{{ project.title }}"><i class="bx bx-plus"></i></a>
-                        <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+                        <a href="{{ project.get_absolute_url }}" title="More Details"><i class="bx bx-link"></i></a>
                       </div>
                     </div>
                   </div>
